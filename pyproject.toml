@@ -1,9 +1,9 @@
 [project]
 name = "expense_manager"
 authors = [
-    { name = "lidia", email = "lidiakeralem16@gmail.com"}
+    { name = "lid", email = "lidia@gmail.com"}
 ]
-description = "expense manager"
+description = "expense_manager"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]

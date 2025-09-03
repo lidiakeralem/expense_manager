@@ -1,8 +1,8 @@
 app_name = "expense_manager"
-app_title = "expense-manager"
-app_publisher = "lidia"
-app_description = "expense manager"
-app_email = "lidiakeralem16@gmail.com"
+app_title = "expense_manager"
+app_publisher = "lid"
+app_description = "expense_manager"
+app_email = "lidia@gmail.com"
 app_license = "mit"
 
 # Apps
@@ -15,7 +15,7 @@ app_license = "mit"
 # 	{
 # 		"name": "expense_manager",
 # 		"logo": "/assets/expense_manager/logo.png",
-# 		"title": "expense-manager",
+# 		"title": "expense_manager",
 # 		"route": "/expense_manager",
 # 		"has_permission": "expense_manager.api.permission.has_app_permission"
 # 	}

@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "EXP-LOG-{expense}-{created_by}",
+ "creation": "2025-09-02 13:54:09.647042",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "expense",
+  "created_date",
+  "created_by",
+  "amount",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "expense",
+   "fieldtype": "Link",
+   "label": "Expense",
+   "options": "Expense"
+  },
+  {
+   "fieldname": "created_date",
+   "fieldtype": "Date",
+   "label": "Created Date"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created By"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Data",
+   "label": "Amount"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-02 14:23:12.832972",
+ "modified_by": "Administrator",
+ "module": "expense-manager",
+ "name": "Expense Log",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "expense"
+}
