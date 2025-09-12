@@ -10,9 +10,7 @@
       <input v-model="newExpense.expense_date" type="date" required />
       <input v-model="newExpense.amount" type="number" placeholder="Amount" required />
       <select v-model="newExpense.payment_method">
-        <option>Cash</option>
-        <option>Card</option>
-        <option>Other</option>
+        <option v-for="m in paymentMethods" :key="m" :value="m">{{ m }}</option>
       </select>
       <select v-model="newExpense.category">
         <option v-for="c in categories" :key="c.name" :value="c.name">{{ c.category_name }}</option>
@@ -41,9 +39,7 @@
           <td><input v-model="expense.amount" type="number" /></td>
           <td>
             <select v-model="expense.payment_method">
-              <option>Cash</option>
-              <option>Card</option>
-              <option>Other</option>
+              <option v-for="m in paymentMethods" :key="m" :value="m">{{ m }}</option>
             </select>
           </td>
           <td>
@@ -74,24 +70,29 @@ export default {
         employee_name: '',
         expense_date: '',
         amount: '',
-        payment_method: 'Cash',
+        payment_method: '',
         category: '',
         description: ''
       }
     };
   },
   computed: {
-    ...mapGetters(['allExpenses', 'allExpenseCategories']),
+    ...mapGetters(['allExpenses', 'allExpenseCategories', 'allPaymentMethods']),
     expenses() { return this.allExpenses; },
-    categories() { return this.allExpenseCategories; }
+    categories() { return this.allExpenseCategories; },
+    paymentMethods() { return this.allPaymentMethods; }
   },
   methods: {
     ...mapActions([
-      'fetchExpenses', 'addExpense', 'updateExpense', 'deleteExpense', 'fetchExpenseCategories'
+      'fetchExpenses', 'addExpense', 'updateExpense', 'deleteExpense', 'fetchExpenseCategories', 'fetchPaymentMethods'
     ]),
     async addExpenseHandler() {
+      // Default to first payment method if not selected
+      if (!this.newExpense.payment_method && this.paymentMethods.length) {
+        this.newExpense.payment_method = this.paymentMethods[0];
+      }
       await this.addExpense(this.newExpense);
-      this.newExpense = { employee_name:'', expense_date:'', amount:'', payment_method:'Cash', category:'', description:'' };
+      this.newExpense = { employee_name:'', expense_date:'', amount:'', payment_method:'', category:'', description:'' };
     },
     updateExpenseHandler(expense) {
       this.updateExpense(expense);
@@ -103,6 +104,7 @@ export default {
   mounted() {
     this.fetchExpenses();
     this.fetchExpenseCategories();
+    this.fetchPaymentMethods();
   }
 };
 </script>

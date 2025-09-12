@@ -7,7 +7,7 @@
 <template>
   <div id="app">
     <!-- Show nav only if user is logged in -->
-    <nav v-if="isAuthenticated">
+    <nav v-if="isLoggedIn">
       <router-link to="/home">Home</router-link> |
       <router-link to="/expenses">Expenses</router-link> |
       <router-link to="/categories">Categories</router-link> |
@@ -20,14 +20,18 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["isAuthenticated"]),
+    ...mapGetters(["isLoggedIn"]),
   },
   methods: {
-    ...mapActions(["logout"]),
+    ...mapMutations(["setLoggedIn"]),
+    logout() {
+      this.setLoggedIn(false);
+      this.$router.push('/login');
+    }
   },
 };
 </script>
