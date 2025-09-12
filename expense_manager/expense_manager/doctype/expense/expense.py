@@ -1,9 +1,3 @@
-# Copyright (c) 2025, lidia and contributors
-# For license information, please see license.txt
-
-from pydoc import doc
-from xmlrpc.client import _datetime
-from expense_manager.expense_manager.doctype import expense, expense_category
 import frappe
 from frappe.model.document import Document
 from frappe.utils import now_datetime, getdate, add_days
@@ -48,9 +42,7 @@ def log_expense_creation(doc, method):
 ## Validate the amount 
 
 def validate_expense_amount(doc, method):
-    """
-    Validate that expense amount > 0 and <= 10,000
-    """
+    
     company_limit = 10000
 
     if doc.amount <= 0:
@@ -61,9 +53,7 @@ def validate_expense_amount(doc, method):
 
 # scheduler for send email with daily summery of total expenses
 def send_daily_expense_summary():
-    """
-    Send daily expense summary for last 24 hours
-    """
+
     # Get date range
     today = now_datetime()
     yesterday = add_days(today, -1)
@@ -85,13 +75,13 @@ def send_daily_expense_summary():
     total_amount = sum(exp["amount"] for exp in expenses)
 
     # Build email content
-    message = f"<h3>Daily Expense Summary</h3>"
-    message += f"<p>Total Expenses: {len(expenses)}</p>"
-    message += f"<p>Total Amount: {total_amount}</p>"
-    message += "<ul>"
-    for exp in expenses:
-        message += f"<li>{exp['creation']} - {exp['owner']} - {exp['amount']} ({exp['category']}, {exp['payment_method']})</li>"
-    message += "</ul>"
+    message = f"<h3>Daily Expense Summary</h3><br>"
+    message += f"<p>Total number of Expenses in last 24 hrs: {len(expenses)}</p>"
+    message += f"<p>Total Amount expense: {total_amount}</p>"
+    # message += "<ul>"
+    # for exp in expenses:
+    #     message += f"<li>{exp['creation']} - {exp['owner']} - {exp['amount']} ({exp['category']}, {exp['payment_method']})</li>"
+    # message += "</ul>"
 
     # Send email
     frappe.sendmail(
@@ -101,7 +91,7 @@ def send_daily_expense_summary():
     )
     print("Daily expense summary email sent successfully.")
     
-	#test
+	
     # print(message)
     # print("Daily expense summary calculation completed.")
 

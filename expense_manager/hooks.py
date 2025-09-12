@@ -5,6 +5,42 @@ app_description = "expense_manager"
 app_email = "lidia@gmail.com"
 app_license = "mit"
 
+
+# Document Event Hooks
+# doc_events = {
+#     "Expense": {
+#         "after_insert": "expense_manager.api.after_insert_expense",
+#         "on_update": "expense_manager.api.on_update_expense"
+#     }
+# }
+
+# # Scheduler Event Hooks
+# scheduler_events = {
+#     "all": [
+#         "expense_manager.api.log_expense_summary"
+#     ]
+# }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Apps
 # ------------------
 

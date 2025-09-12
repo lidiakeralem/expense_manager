@@ -8,24 +8,25 @@
  "doctype": "Report",
  "filters": [
   {
-   "fieldname": "expense_date",
+   "fieldname": "from_date",
    "fieldtype": "Date",
-   "label": "from_date",
+   "label": "From Date",
    "mandatory": 0,
    "wildcard_filter": 0
   },
   {
-   "fieldname": "expense_date",
+   "fieldname": "to_date",
    "fieldtype": "Date",
-   "label": "to_date",
+   "label": "To Date",
    "mandatory": 0,
    "wildcard_filter": 0
   },
   {
-   "fieldname": "catagory",
-   "fieldtype": "Select",
-   "label": "category",
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
    "mandatory": 0,
+   "options": "Expense Category",
    "wildcard_filter": 0
   }
  ],
@@ -33,7 +34,7 @@
  "is_standard": "Yes",
  "json": "{}",
  "letterhead": null,
- "modified": "2025-09-02 11:30:45.868591",
+ "modified": "2025-09-05 17:32:32.673263",
  "modified_by": "Administrator",
  "module": "expense-manager",
  "name": "Expense Reports",
@@ -42,7 +43,7 @@
  "ref_doctype": "Expense",
  "reference_report": "expense report",
  "report_name": "Expense Reports",
- "report_type": "Report Builder",
+ "report_type": "Script Report",
  "roles": [
   {
    "role": "System Manager"

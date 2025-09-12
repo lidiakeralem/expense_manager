@@ -1,0 +1,62 @@
+<template>
+  <div>
+    <Navbar />
+    <h1>Welcome to Expense Manager</h1>
+    <p>Use the navigation bar to manage expenses, categories, and view reports.</p>
+  </div>
+</template>
+
+<script>
+import Navbar from '../components/Navbar.vue';
+export default { components: { Navbar } };
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <template>
+  <div class="max-w-3xl py-12 mx-auto">
+    <Button
+      icon-left="code"
+      @click="$resources.ping.fetch"
+      :loading="$resources.ping.loading"
+    >
+      Click to send 'ping' request
+    </Button>
+    <div>
+      {{ $resources.ping.data }}
+    </div>
+    <pre>{{ $resources.ping }}</pre>
+
+    <Button @click="showDialog = true">Open Dialog</Button>
+    <Dialog title="Title" v-model="showDialog"> Dialog content </Dialog>
+  </div>
+</template>
+
+<script>
+import { Dialog } from 'frappe-ui'
+
+export default {
+  name: 'Home',
+  data() {
+    return {
+      showDialog: false,
+    }
+  },
+  resources: {
+    ping: {
+      url: 'ping',
+    },
+  },
+  components: {
+    Dialog,
+  },
+}
+</script> -->

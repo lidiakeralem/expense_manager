@@ -240,3 +240,59 @@
 
 #     return columns, data
 
+import frappe
+from frappe import _
+
+def execute(filters=None):
+    if not filters:
+        filters = {}
+
+    conditions = []
+
+    if filters.get("category"):
+        conditions.append(f"category = '{filters['category']}'")
+
+    if filters.get("from_date"):
+        conditions.append(f"expense_date >= '{filters['from_date']}'")
+    if filters.get("to_date"):
+        conditions.append(f"expense_date <= '{filters['to_date']}'")
+
+    where_clause = " AND ".join(conditions) if conditions else "1=1"
+
+    expenses = frappe.db.sql(f"""
+        SELECT 
+            employee_name,
+            expense_date,
+            category,
+            amount,
+            payment_method,
+            description
+        FROM `tabExpense`
+        WHERE {where_clause}
+        ORDER BY expense_date ASC
+    """, as_dict=True)
+
+    # Calculate total
+    total_amount = sum([exp.amount for exp in expenses]) if expenses else 0
+
+    # Add total row
+    if expenses:
+        expenses.append({
+            "employee_name": _("Total"),
+            "expense_date": "",
+            "category": "",
+            "amount": total_amount,
+            "payment_method": "",
+            "description": ""
+        })
+
+    columns = [
+        {"label": _("Employee"), "fieldname": "employee_name", "fieldtype": "Data", "width": 150},
+        {"label": _("Expense Date"), "fieldname": "expense_date", "fieldtype": "Date", "width": 120},
+        {"label": _("Category"), "fieldname": "category", "fieldtype": "Link", "options": "Expense Category", "width": 150},
+        {"label": _("Amount"), "fieldname": "amount", "fieldtype": "Currency", "width": 120},
+        {"label": _("Payment Method"), "fieldname": "payment_method", "fieldtype": "Select", "width": 120},
+        {"label": _("Description"), "fieldname": "description", "fieldtype": "Small Text", "width": 300},
+    ]
+
+    return columns, expenses

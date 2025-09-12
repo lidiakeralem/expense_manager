@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2025-09-05 02:57:12.057960",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-09-05 15:30:55.942792",
+ "modified_by": "Administrator",
+ "module": "expense-manager",
+ "name": "barcode scanner",
+ "owner": "Administrator",
+ "page_name": "barcode scanner",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 1,
+ "title": "barcode scanner"
+}
