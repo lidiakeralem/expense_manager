@@ -48,6 +48,16 @@ def delete_expense(name):
     return {"message": f"Expense {name} deleted successfully"}
 
 
+@frappe.whitelist(allow_guest=True)
+def get_payment_methods():
+    # Fetch all options from Expense doctype's payment_method field
+    field = frappe.get_meta("Expense").get_field("payment_method")
+    if field and field.options:
+        # Options are stored as newline-separated string in Frappe
+        return [opt.strip() for opt in field.options.split("\n") if opt.strip()]
+    return []
+
+
 # ---------------- EXPENSE CATEGORY ----------------
 
 @frappe.whitelist(allow_guest=True)

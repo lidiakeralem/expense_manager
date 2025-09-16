@@ -56,7 +56,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #2b6cb0;
+  background-color: #a2c2d1;
   color: #fff;
 }
 .navbar .nav-links {

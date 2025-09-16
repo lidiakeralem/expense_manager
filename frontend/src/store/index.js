@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true; // use session cookies
 
 // Attach CSRF token header for POST/PUT/DELETE to avoid 417
 axios.interceptors.request.use((config) => {
-    const needsCsrf = ['post','put','patch','delete'].includes((config.method || '').toLowerCase());
+    const needsCsrf = ['post', 'put', 'patch', 'delete'].includes((config.method || '').toLowerCase());
     if (needsCsrf) {
         const csrf = (document.cookie.match(/(^|; )frappe-csrf-token=([^;]*)/) || [])[2];
         if (csrf) {
@@ -100,7 +100,7 @@ export default createStore({
             } catch (err) { console.error(err); }
         },
 
-        // ========== PAYMENT METHODS from DocType ==========
+        // // ========== PAYMENT METHODS from DocType ==========
         async fetchPaymentMethods({ commit, state }) {
             const fallbackDefaults = ['Cash', 'Card', 'Bank', 'Mobile Wallet', 'Other'];
             try {
@@ -138,5 +138,6 @@ export default createStore({
                 commit('setPaymentMethods', fallbackDefaults);
             }
         }
+
     }
 });
