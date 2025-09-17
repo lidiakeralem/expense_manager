@@ -176,7 +176,7 @@ export default {
 .forgotpwd {
   margin-top: 15px;
   text-align: center; 
-  color: #1d4ed8;
+  color: #6784d3;
 }
 .modal-overlay {
   position: fixed;

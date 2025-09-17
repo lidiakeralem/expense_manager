@@ -288,8 +288,7 @@ button {
 .btn-add-toggle:hover { background: #4b5563; }
 
 .btn-update {
-  background: #6b7280; /* soft blue */
-  color: white;
+  color: rgb(95, 55, 241);
   border: none;
   border-radius: 6px;
   padding: 6px 12px;
@@ -297,8 +296,7 @@ button {
 .btn-update:hover { background: #4b5563; }
 
 .btn-delete {
-  background: #da375a; /* toned down red */
-  color: white;
+  color: rgb(241, 86, 86);
   border: none;
   border-radius: 6px;
   padding: 6px 12px;
